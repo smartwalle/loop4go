@@ -14,6 +14,10 @@ func main() {
 	loop = loop4go.NewLoop(time.Second, queue, func() {
 		count++
 		fmt.Println(count)
+
+		if count > 2 {
+			queue.Stop()
+		}
 	})
 	loop.Start()
 

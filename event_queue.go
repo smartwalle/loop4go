@@ -17,12 +17,13 @@ type EventQueue interface {
 
 type eventQueue struct {
 	q *Queue
-	w sync.WaitGroup
+	w *sync.WaitGroup
 }
 
 func NewEventQueue() EventQueue {
 	var eq = &eventQueue{}
 	eq.q = NewQueue()
+	eq.w = &sync.WaitGroup{}
 	return eq
 }
 
